@@ -8,6 +8,7 @@ import { map } from "rxjs/Operators/map";
 import { EmptyObservable } from "rxjs/observable/EmptyObservable";
 
 import { environment } from "../../environments/environment";
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class CompanyService {
@@ -33,6 +34,24 @@ export class CompanyService {
   compareCompanies(c1 : Company, c2: Company){
     return c1.phone - c2.phone;
   }
+
+  addCompany(company: Company): Observable<Company>{
+    return this.httpClient.post<Company>(`${this.API_BASE}/company`, company, { headers: new HttpHeaders()
+      .set('content-type', 'application/json') })
+  }
+
+  updateCompany(company: Company): Observable<Company> {
+    return this.httpClient.put<Company>(
+      `${this.API_BASE}/company/${company.id}`, company,
+      { headers: new HttpHeaders().set('content-type', 'application/json') }
+    );
+  }
+
+  getCompany(companyId: number): Observable<Company> {
+      return this.httpClient.get<Company>(`${this.API_BASE}/company/${companyId}`);
+  }
+
+
 
   errorHandler(error: Error): Observable<Company[]> {
     // implement proper error handling

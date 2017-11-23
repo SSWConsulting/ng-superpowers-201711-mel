@@ -13,6 +13,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { CompanyTableComponent } from './company/company-table/company-table.component';
 import { CompanyEditComponent } from './company/company-edit/company-edit.component';
 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import { CompanyEditComponent } from './company/company-edit/company-edit.compon
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [CompanyService],
   bootstrap: [AppComponent]
