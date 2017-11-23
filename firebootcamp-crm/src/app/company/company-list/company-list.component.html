@@ -1,0 +1,8 @@
+<p>
+  My Companies
+</p>
+<button class="btn btn-success float-right" [routerLink]="['/company/edit', 'new']">Add</button>
+
+<fbc-company-table [companies]="companies$ | async"
+(onDeleteCompany)="deleteCompany($event)" >
+</fbc-company-table>
